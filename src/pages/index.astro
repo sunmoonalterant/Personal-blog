@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PostList from '../components/PostList.astro';
+import { withBase } from '../lib/urls.js';
+
+const projects = (await getCollection('projects')).filter((item) => item.data.featured).slice(0, 2);
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="林野｜作品与笔记" description="林野的个人作品集与写作笔记。">
+  <section class="hero shell">
+    <p class="eyebrow">独立创作者 / 设计与叙事</p>
+    <h1>把日常的观察，<br />做成值得停留的东西。</h1>
+    <p class="hero__copy">这里收录我正在实践的设计、网页与写作。愿每一个项目，都比昨天更接近心里那个清晰的念头。</p>
+    <a class="button" href={withBase(base, 'projects/')}>浏览精选作品 <span aria-hidden="true">↗</span></a>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading"><div><p class="eyebrow">Selected work</p><h2>精选作品</h2></div><a href={withBase(base, 'projects/')}>所有作品 <span aria-hidden="true">→</span></a></div>
+    <div class="project-grid">{projects.map((project) => <ProjectCard project={project} />)}</div>
+  </section>
+
+  <section class="shell section writing-section">
+    <div class="section-heading"><div><p class="eyebrow">From the notebook</p><h2>最近写作</h2></div><a href={withBase(base, 'blog/')}>阅读全部 <span aria-hidden="true">→</span></a></div>
+    <PostList posts={posts} />
+  </section>
+</BaseLayout>

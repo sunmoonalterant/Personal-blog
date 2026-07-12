@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+const projects = await getCollection('projects');
+---
+<BaseLayout title="作品｜林野" description="林野的设计、网页与叙事实验。">
+  <section class="shell page-intro"><p class="eyebrow">Selected work</p><h1>做过的事，<br />也在继续生长。</h1><p>一些围绕数字体验、文字与视觉的练习。</p></section>
+  <section class="shell section"><div class="project-grid">{projects.map((project) => <ProjectCard project={project} />)}</div></section>
+</BaseLayout>
