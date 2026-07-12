@@ -24,9 +24,6 @@ jobs:
         with:
           path: .
           package-manager: npm
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: ./dist
   deploy:
     environment:
       name: github-pages
