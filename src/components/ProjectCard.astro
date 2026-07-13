@@ -1,17 +1,17 @@
 ---
-const { posts } = Astro.props;
+const { project } = Astro.props;
 const base = import.meta.env.BASE_URL;
 import { withBase } from '../lib/urls.js';
-const formatDate = (date) => new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
 ---
 
-<div class="post-list">
-  {posts.map((post) => (
-    <article class="post-row">
-      <div class="record-label">LOG / NOTE</div>
-      <div><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time><span> / {post.data.tags[0] ?? '随笔'}</span></div>
-      <h3><a href={withBase(base, `blog/${post.id}/`)}>{post.data.title}</a></h3>
-      <p>{post.data.description}</p>
-    </article>
-  ))}
-</div>
+<article class="project-card">
+  <a class="project-card__image" href={withBase(base, `projects/${project.id}/`)} aria-label={`查看项目：${project.data.title}`}>
+    {project.data.cover ? <img src={withBase(base, project.data.cover)} alt="" width="1200" height="800" loading="lazy" /> : <span />}
+  </a>
+  <div class="project-card__body">
+    <div class="record-label">NODE / PROJECT</div>
+    <div class="eyebrow">{project.data.tags.slice(0, 2).join(' · ')}</div>
+    <h3><a href={withBase(base, `projects/${project.id}/`)}>{project.data.title}</a></h3>
+    <p>{project.data.description}</p>
+  </div>
+</article>
