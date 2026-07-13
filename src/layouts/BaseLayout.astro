@@ -27,7 +27,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <body>
     <a class="skip-link" href="#main">跳到主要内容</a>
     <header class="site-header">
-      <a class="brand" href={withBase(BASE_URL)} aria-label="返回首页">林野<span>·</span>作品与笔记</a>
+      <a class="brand" href={withBase(BASE_URL)} aria-label="返回首页">天凯<span>·</span>作品与笔记</a>
       <nav aria-label="主导航">
         <a href={withBase(BASE_URL, 'projects/')}>作品</a>
         <a href={withBase(BASE_URL, 'blog/')}>文章</a>
@@ -36,7 +36,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </header>
     <main id="main"><slot /></main>
     <footer class="site-footer">
-      <p>© {new Date().getFullYear()} 林野。以好奇心记录，也以作品回应世界。</p>
+      <p>© {new Date().getFullYear()} 天凯。以好奇心记录，也以作品回应世界。</p>
     </footer>
   </body>
 </html>
