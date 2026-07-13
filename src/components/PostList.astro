@@ -1,15 +1,17 @@
-<aside class="network-status" aria-label="网络状态">
-  <div class="network-status__header">
-    <span class="status-dot" aria-hidden="true"></span>
-    <span>SYSTEM ONLINE</span>
-    <span>UPTIME 99.98%</span>
-  </div>
-  <div class="network-status__topology" aria-hidden="true">
-    <span></span><span></span><span></span><span></span>
-  </div>
-  <dl class="network-status__rows">
-    <div><dt>CORE ROUTER</dt><dd>HEALTHY</dd></div>
-    <div><dt>EDGE NETWORK</dt><dd>STABLE</dd></div>
-    <div><dt>DEPLOY PIPELINE</dt><dd>READY</dd></div>
-  </dl>
-</aside>
+---
+const { posts } = Astro.props;
+const base = import.meta.env.BASE_URL;
+import { withBase } from '../lib/urls.js';
+const formatDate = (date) => new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
+---
+
+<div class="post-list">
+  {posts.map((post) => (
+    <article class="post-row">
+      <div class="record-label">LOG / NOTE</div>
+      <div><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time><span> / {post.data.tags[0] ?? '随笔'}</span></div>
+      <h3><a href={withBase(base, `blog/${post.id}/`)}>{post.data.title}</a></h3>
+      <p>{post.data.description}</p>
+    </article>
+  ))}
+</div>
