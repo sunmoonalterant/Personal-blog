@@ -6,4 +6,4 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const date = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' }).format(post.data.pubDate);
 ---
-<BaseLayout title={`${post.data.title}｜林野`} description={post.data.description}><article class="shell article"><p class="eyebrow">{post.data.tags.join(' · ')}</p><h1>{post.data.title}</h1><p class="article-date">{date}</p><div class="article-content"><Content /></div></article></BaseLayout>
+<BaseLayout title={`${post.data.title}｜天凯`} description={post.data.description}><article class="shell article"><p class="eyebrow">{post.data.tags.join(' · ')}</p><h1>{post.data.title}</h1><p class="article-date">{date}</p><div class="article-content"><Content /></div></article></BaseLayout>
