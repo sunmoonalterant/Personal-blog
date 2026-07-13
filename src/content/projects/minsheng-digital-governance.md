@@ -1,7 +1,7 @@
 ---
 title: "民生数治惠家"
 description: "面向社区居民、网格员与管理者的一体化数字治理平台。"
-cover: "/images/field-guide.svg"
+cover: "/images/7088f7e0-ca4e-4451-abdc-536f161edbfb.png"
 tags: [微信小程序, Vue, Spring Boot, Python, 社区治理, AI预警]
 featured: true
 ---
