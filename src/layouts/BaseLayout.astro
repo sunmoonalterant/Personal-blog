@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/records.css';
 import { withBase } from '../lib/urls.js';
 
 interface Props {
@@ -18,7 +19,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f5efe6" />
+    <meta name="theme-color" content="#07111f" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={withBase(BASE_URL, 'favicon.svg')} type="image/svg+xml" />
     <title>{title}</title>
